@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+  </head>
+  <body>
+    <script>
+      function toggleLight(state) {
+        var xhr = new XMLHttpRequest();
+        var url = '/api/light/' + state;
+        if (state === 'on') {
+          url = 'https://sgp1.blynk.cloud/external/api/update?token=VKZdaEOgp0LgitiUwy7srZHp5t5gBUni';
+        } else if (state === 'off') {
+          url = 'https://sgp1.blynk.cloud/external/api/update?token=VKZdaEOgp0LgitiUwy7srZHp5t5gBUni&v0=0';
+        }
+        xhr.open('GET', url, true);
+        xhr.send();
+      }
+
+   
+      function togglePump(state) {
+        var xhr = new XMLHttpRequest();
+        var url = '/api/pump/' + state;
+        if (state === 'on') {
+          url = 'https://sgp1.blynk.cloud/external/api/update?token=VKZdaEOgp0LgitiUwy7srZHp5t5gBUni&v1=1';
+        } else if (state === 'off') {
+          url = 'https://sgp1.blynk.cloud/external/api/update?token=VKZdaEOgp0LgitiUwy7srZHp5t5gBUni&v1=0';
+        }
+        xhr.open('GET', url, true);
+        xhr.send();
+      }
+
+
+      
+      function toggleExtension(state) {
+        var xhr = new XMLHttpRequest();
+        var url = '/api/extension/' + state;
+        if (state === 'on') {
+          url = 'https://sgp1.blynk.cloud/external/api/update?token=VKZdaEOgp0LgitiUwy7srZHp5t5gBUni&v2=1';
+        } else if (state === 'off') {
+          url = 'https://sgp1.blynk.cloud/external/api/update?token=VKZdaEOgp0LgitiUwy7srZHp5t5gBUni&v2=0';
+        }
+        xhr.open('GET', url, true);
+        xhr.send();
+      }
+    </script>
+        
+      
+    <button id="light-on" onclick="toggleLight('on')">Light On</button>
+    <button id="light-off" onclick="toggleLight('off')">Light Off</button>
+    <button id="pump-on" onclick="togglePump('on')">Pump On</button>
+    <button id="pump-off" onclick="togglePump('off')">Pump Off</button>
+    <button id="extension-on" onclick="toggleExtension('on')">Extension On</button>
+    <button id="extension-off" onclick="toggleExtension('off')">Extension Off</button>
+
+
+
+
+
+
+
+
+    background-color: rgb(141, 221, 141);
+
+
+
+
+    <label class="switch">
+      <input type="checkbox" id="api-switch">
+      <span class="slider"></span>
+    </label>
+    <script>
+      const apiSwitch = document.getElementById("api-switch");
+      apiSwitch.addEventListener("change", function() {
+        const apiUrl = this.checked ? "https://sgp1.blynk.cloud/external/api/update?token=VKZdaEOgp0LgitiUwy7srZHp5t5gBUni&v0=1" : "https://sgp1.blynk.cloud/external/api/update?token=VKZdaEOgp0LgitiUwy7srZHp5t5gBUni&v0=0";
+        fetch(apiUrl)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then(data => console.log(data))
+        .catch(error => console.error("Error fetching data:", error));
+    });
+    </script>
+  </body>
+</html>
