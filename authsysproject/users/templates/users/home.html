@@ -2,10 +2,12 @@
 {% load static %}
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/Home.css' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <div class="container">
-            <div class="row g-0">
-                <div class="col-sm-7 col-md-7" id="header-text">
-                  <h1 id="header-h1" style="margin-left: 20px;">Smart Home Switches</h1>
+            <div class="row">
+                <div id="header-text">
+                  <h1 id="header-h1" style="margin-left: 2%;">Smart Home Switches</h1>
+                  <h1 style="margin-left: 2%; color: #ff8248;">Here you can navigate your smart devices</h1>
                   <p id="header-paragraph"><br></p>
                   <!-- <a class="btn" style="color: white; background-color: #fd5e14;"type="submit" id="body-link-row">Discover More</a> -->
                 </div>
@@ -216,7 +218,6 @@ setInterval(updateSwitch2, 3000);
     height: 30px;
     border-radius: 25px;
     background-color: #ccc;
-    /* transition: background .3s; */
     outline: none;
     cursor: pointer;
   }
@@ -281,7 +282,7 @@ setInterval(updateSwitch2, 3000);
 
 
   .all_switches{
-    margin-left: 130px;
+    margin-left: 10%;
   }
 </style>
 
